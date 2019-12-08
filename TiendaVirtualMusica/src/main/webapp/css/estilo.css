@@ -1,0 +1,177 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#principal {
+	width: 1000px;
+	height: 750px;
+	margin: 0.5em auto;
+	padding: 1em;
+}
+
+#pie {
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+	width: 1000px;
+	height: 40px;
+	color: white;
+}
+
+h1, h2 {
+	text-align: center;
+	color: white;
+}
+
+
+body {
+	background-image: url("../resources/fondoWEB.jpg");
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+#logo {
+	width: 100%;
+	height: 100px;
+	background: black;
+	
+}
+
+.navegacion{
+	height: 7%;
+	background: #ffffff;
+	
+}
+.dos {
+	width: 250px;
+	height: 34px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ff6600;
+	border: 2px solid #ffffff;
+	border-radius: 8px;
+}
+.texto{
+
+		width: 250px;
+	height: 34px;
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img {
+	display: block;
+	margin: auto;
+}
+
+input[type=text] ,input[type=password]{
+
+	display: block;
+	
+	background-color: #666666;
+	border: 2px solid #ffffff;
+	opacity: 0.3;
+	filter: alpha(opacity = 60); /* For IE8 and earlier */
+	border-radius: 8px;
+}
+
+
+
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: white; 
+} 
+  
+
+
+
+.search{
+	width: 500px;
+	height: 34px;
+	
+	display: block;
+	
+	background-color: #666666;
+	border: 2px solid #ffffff;
+	opacity: 0.3;
+	
+	filter: alpha(opacity = 60); /* For IE8 and earlier */
+	border-radius: 8px;
+}
+
+
+
+
+#horizontal{
+	padding:0;
+	list-style: none;
+}
+
+#horizontal li{
+	display: inline-block;
+}
+
+#horizontal li a{
+	display: block;
+	padding: 15px;
+	text-decoration: none;
+	color: #000000;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin: 0 10px;
+	position: relative;
+	font-size: 20px;
+}
+
+#horizontal li a, 
+#horizontal li a:after, 
+#horizontal li a:before{
+	transition: all .5s;
+}
+
+#horizontal li a:hover{
+	color: #999900;
+}
+
+#horizontal li a:after{
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #333;
+    height: 1px;
+}
+
+#horizontal li a:hover:after{
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
