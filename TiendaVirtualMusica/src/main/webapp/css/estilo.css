@@ -10,6 +10,15 @@
 	padding: 1em;
 }
 
+
+#contenedor{
+	
+	position: relative;
+	top: 20px;
+	align-content: center;
+}
+
+
 #pie {
 	background-color: black;
 	position: absolute;
@@ -17,6 +26,7 @@
 	width: 1000px;
 	height: 40px;
 	color: white;
+	text-align: center;
 }
 
 h1, h2 {
@@ -44,20 +54,24 @@ body {
 	
 }
 .dos {
+	
 	width: 250px;
 	height: 34px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	display: block;	
+	
+margin-left:auto;
+margin-right:auto;
+	
 	background-color: #ff6600;
 	border: 2px solid #ffffff;
 	border-radius: 8px;
 }
-.texto{
 
-		width: 250px;
-	height: 34px;
+.cajastexto{
 	
+	width: 250px;
+	height: 34px;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -69,13 +83,15 @@ img {
 
 input[type=text] ,input[type=password]{
 
-	display: block;
+	
+
 	
 	background-color: #666666;
 	border: 2px solid #ffffff;
 	opacity: 0.3;
 	filter: alpha(opacity = 60); /* For IE8 and earlier */
 	border-radius: 8px;
+	color:bla
 }
 
 
@@ -88,18 +104,34 @@ input[type=text] ,input[type=password]{
 
 
 .search{
-	width: 500px;
+	
+		width: 500px;
 	height: 34px;
 	
 	display: block;
 	
 	background-color: #666666;
-	border: 2px solid #ffffff;
+	border: 5px solid #ffffff;
 	opacity: 0.3;
 	
 	filter: alpha(opacity = 60); /* For IE8 and earlier */
-	border-radius: 8px;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,7 +164,7 @@ input[type=text] ,input[type=password]{
 }
 
 #horizontal li a:hover{
-	color: #999900;
+	color: #ff6600;
 }
 
 #horizontal li a:after{
@@ -158,7 +190,16 @@ input[type=text] ,input[type=password]{
 
 
 
-
+.centro{
+	
+	padding: 2px;
+	display: block;
+	width: 350px;
+	margin: auto;
+	align-content: center; 	
+	
+	
+}
 
 
 

@@ -8,22 +8,24 @@
 		xmlns:h="http://java.sun.com/jsf/html"
 		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" >
 		<ui:define name="contenido">
-			<h:form>
 				<BR />
 				<BR />
 				<BR />
 				
 				<h1>LOGIN</h1>
-				<BR />
-				<BR />
+			<h:form class="centro" 	>
 			
-				<h:inputText styleClass="texto" pt:placeholder="Usuario">
+				<BR />
+				<BR />
+				
+		
+				<h:inputText  styleClass="cajastexto"  pt:placeholder="Usuario" >
 	
 	
 				</h:inputText >
 				<br />
 				<br />
-				<h:inputSecret styleClass="texto" pt:placeholder="contraseña">
+				<h:inputSecret styleClass="cajastexto" pt:placeholder="contraseña">
 				
 	
 	
@@ -34,6 +36,9 @@
 				
 				<h:commandButton  value="login" action="inicio.xhtml"  styleClass="dos" >
 				</h:commandButton>
+				
+			
+			
 			
 		 
 	

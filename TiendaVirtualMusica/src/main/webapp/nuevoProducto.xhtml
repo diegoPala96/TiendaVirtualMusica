@@ -1,0 +1,74 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+
+
+
+
+</h:head>
+
+
+<body>
+	<ui:composition template="templates/template2.xhtml">
+
+
+		<ui:define name="contenido">
+		<br />
+		<h2>PRODUCTO</h2>
+		<br />
+			<h:form class="centro">
+
+				<br />
+
+				<h:panelGrid columns="2" class="centro">
+
+					<h:outputText value="nombre"></h:outputText>
+					<h:inputText styleClass="cajastexto"></h:inputText>
+					
+						
+					
+					<h:outputText value="album"></h:outputText>
+					<h:inputText styleClass="cajastexto"></h:inputText>
+					
+					<h:outputText value="artista"></h:outputText>
+					<h:inputText styleClass="cajastexto"></h:inputText>
+					
+					<h:outputText value="duracion"></h:outputText>
+					<h:inputText styleClass="cajastexto"></h:inputText>
+					
+					<h:outputText value="año"></h:outputText>
+					<h:inputText styleClass="cajastexto"></h:inputText>
+					
+
+
+
+
+
+				</h:panelGrid>
+				<br/>
+				<h:commandButton  value="Crear" class="dos" />
+
+
+
+
+
+				<br />
+
+
+
+			</h:form>
+
+
+		</ui:define>
+
+
+
+	</ui:composition>
+</body>
+</html>
