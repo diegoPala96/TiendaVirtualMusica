@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class producto {
+public class Producto {
 
 	@Id
 	@GeneratedValue
@@ -20,6 +20,7 @@ public class producto {
 	private String nombre;
 	
 	@NotNull
+	@Size(min=4, max=30)
 	private String album;
 	
 	@NotNull
@@ -29,9 +30,18 @@ public class producto {
 	private String duracion;
 	
 	@NotNull
+	@Size(max = 4)
 	private String anio;
+	
+	@NotNull
+	private double precio;
 
-
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
 	public int getIdProducto() {
 		return idProducto;
 	}
@@ -69,13 +79,12 @@ public class producto {
 	public void setAnio(String anio) {
 		this.anio = anio;
 	}
-
-
 	@Override
 	public String toString() {
-		return "producto [idProducto=" + idProducto + ", nombre=" + nombre + ", album=" + album + ", artista=" + artista
-				+ ", duracion=" + duracion + ", anio=" + anio + "]";
+		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre + ", album=" + album + ", artista=" + artista
+				+ ", duracion=" + duracion + ", anio=" + anio + ", precio=" + precio + "]";
 	}
+
 
 
 }
