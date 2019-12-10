@@ -1,7 +1,5 @@
 package tienda.en;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,8 +11,6 @@ public class CarroCompraEN {
 	@GeneratedValue
 	private int idCarro;
 
-	private List<ProductoEN> listaProducto;
-
 	public int getIdCarro() {
 		return idCarro;
 	}
@@ -23,17 +19,9 @@ public class CarroCompraEN {
 		this.idCarro = idCarro;
 	}
 
-	public List<ProductoEN> getListaProducto() {
-		return listaProducto;
-	}
-
-	public void setListaProducto(List<ProductoEN> listaProducto) {
-		this.listaProducto = listaProducto;
-	}
-
 	@Override
 	public String toString() {
-		return "CarroCompraEN [idCarro=" + idCarro + ", listaProducto=" + listaProducto + "]";
+		return "CarroCompraEN [idCarro=" + idCarro + ", listaProducto=";
 	}
 
 }

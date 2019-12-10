@@ -31,6 +31,9 @@ public class ProductoEN {
 	@NotNull
 	private String anio;
 
+	@NotNull
+	private double precio;
+
 	public int getIdProducto() {
 		return idProducto;
 	}
@@ -77,6 +80,14 @@ public class ProductoEN {
 
 	public void setAnio(String anio) {
 		this.anio = anio;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 	@Override

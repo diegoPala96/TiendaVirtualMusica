@@ -26,8 +26,6 @@ public class ClienteEN extends Persona {
 	@NotNull
 	private String password;
 
-	private CarroCompraEN carro;
-
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -52,18 +50,9 @@ public class ClienteEN extends Persona {
 		this.password = password;
 	}
 
-	public CarroCompraEN getCarro() {
-		return carro;
-	}
-
-	public void setCarro(CarroCompraEN carro) {
-		this.carro = carro;
-	}
-
 	@Override
 	public String toString() {
-		return "ClienteEN [idCliente=" + idCliente + ", usuario=" + usuario + ", password=" + password + ", carro="
-				+ carro + "]";
+		return "ClienteEN [idCliente=" + idCliente + ", usuario=" + usuario + ", password=" + password;
 	}
 
 }
