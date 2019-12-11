@@ -23,6 +23,7 @@ public class ProductoDao {
 	}
 
 	public void actualizar(ProductoEN producto) {
+		//em.refresh(producto);
 		em.merge(producto);
 
 	}

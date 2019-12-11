@@ -29,7 +29,7 @@
 				<h:panelGrid columns="3" >
 	
 					<h:outputText value="Id-Producto" for="id"></h:outputText>
-					<h:inputText  styleClass="cajastexto" id="id"></h:inputText>
+					<h:inputText  value="#{productoBeen.producto.idProducto}" styleClass="cajastexto" id="id"></h:inputText>
 					<h:message  for="id"/>
 					
 					<h:outputText value="Nombre" for="nombre"></h:outputText>
@@ -65,7 +65,9 @@
 
 				</h:panelGrid>
 				<br/>
-				<h:commandButton  action="#{productoBeen.guardarCambios()}" value="actualizar" class="dos" />
+				<h:commandButton  action="#{productoBeen.edit()}" value="actualizar" class="dos" />
+
+
 
 
 

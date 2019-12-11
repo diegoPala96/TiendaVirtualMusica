@@ -31,8 +31,18 @@ public class ProductoON {
 		}
 	}
 
-	public void editar() {
-		ProductoEN producto = new ProductoEN();
+	public void editar( ProductoEN producto) {
+	//public void editar( int id , String nombre, String album, String duracion,String anio, double precio) {
+//		ProductoEN producto = new ProductoEN();
+//		producto.setIdProducto(id);
+//		producto.setNombre(nombre);
+//		producto.setAlbum(album);
+//		producto.setDuracion(duracion);
+//		producto.setAnio(anio);
+//		producto.setPrecio(precio);
+//		producto.setEditable(false);
+//		
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+producto.getIdProducto());
 
 		productoDAO.actualizar(producto);
 	}

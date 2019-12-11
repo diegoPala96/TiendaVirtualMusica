@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
 
 import tienda.ProductoON;
 import tienda.en.ProductoEN;
@@ -72,7 +73,7 @@ public class productoBeen {
 //			System.out.println("llego: ======   " + productoEN.getNombre());
 //
 //		}
-		productoON.editar();
+	//	productoON.editar();
 		return null;
 	}
 
@@ -81,5 +82,18 @@ public class productoBeen {
 		producto.setEditable(true);
 		return null;
 	}
+	
+	public String edit() {
+		
+		
+	
+
+
+		//productoON.editar(id, nombre, album,duracion,anio,precio);
+		productoON.editar(producto);
+		return null;
+	}
+
+	
 
 }
