@@ -74,17 +74,7 @@ margin-right:auto;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-img {
-	display: block;
-	margin: auto;
-}
-
-input[type=text] ,input[type=password]{
-
 	
-
 	
 	background-color: #666666;
 	border: 2px solid #ffffff;
@@ -92,7 +82,15 @@ input[type=text] ,input[type=password]{
 	filter: alpha(opacity = 60); /* For IE8 and earlier */
 	border-radius: 8px;
 	color:bla
+	
 }
+
+img {
+	display: block;
+	margin: auto;
+}
+
+
 
 
 

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+
+
+
+
+</h:head>
+
+
+<body>
+	<ui:composition template="templates/template2.xhtml">
+
+
+		<ui:define name="contenido">
+		<br />
+		<h2>EDITAR-PRODUCTO</h2>
+		<br />
+			<h:form class="centro">
+
+				<br />
+
+				<h:panelGrid columns="3" >
+	
+					<h:outputText value="Id-Producto" for="id"></h:outputText>
+					<h:inputText  styleClass="cajastexto" id="id"></h:inputText>
+					<h:message  for="id"/>
+					
+					<h:outputText value="Nombre" for="nombre"></h:outputText>
+					<h:inputText value="#{productoBeen.producto.nombre}" styleClass="cajastexto" id="nombre"></h:inputText>
+					<h:message  for="nombre"/>
+						
+					
+					<h:outputText value="Album"  for="album"></h:outputText>
+					<h:inputText  value="#{productoBeen.producto.album}" styleClass="cajastexto" id="album"></h:inputText>
+					<h:message  for="album"/>
+					
+					<h:outputText value="Artista" for = "artista"></h:outputText>
+					<h:inputText value="#{productoBeen.producto.artista}" styleClass="cajastexto" id="artista"></h:inputText>
+					
+					<h:message  for="artista"/>
+					
+					<h:outputText value="Duracion" for ="duracion"></h:outputText>
+					<h:inputText  value="#{productoBeen.producto.duracion}"  styleClass="cajastexto" id="duracion"></h:inputText>
+					<h:message  for="duracion"/>
+					
+					<h:outputText value="Año" for="anio"></h:outputText>
+					<h:inputText value="#{productoBeen.producto.anio}"  styleClass="cajastexto" id= "anio"></h:inputText>
+					<h:message  for="anio"/>
+					
+					<h:outputText value="precio" for="precio"></h:outputText>
+					<h:inputText  value="#{productoBeen.producto.precio}" styleClass="cajastexto" id="precio"></h:inputText>
+					<h:message  for="precio"/>
+					
+
+
+
+
+
+				</h:panelGrid>
+				<br/>
+				<h:commandButton  action="#{productoBeen.guardarCambios()}" value="actualizar" class="dos" />
+
+
+
+
+
+				<br />
+
+
+
+			</h:form>
+
+
+		</ui:define>
+
+
+
+	</ui:composition>
+</body>
+</html>

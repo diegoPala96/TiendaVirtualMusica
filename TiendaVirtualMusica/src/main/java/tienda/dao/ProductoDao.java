@@ -1,8 +1,11 @@
 package tienda.dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import tienda.en.ProductoEN;
 
@@ -24,15 +27,24 @@ public class ProductoDao {
 
 	}
 
-	public void borrar(String nombre) {
-		em.remove(leer(nombre));
+	public ProductoEN leer(int id) {
+
+		return em.find(ProductoEN.class, id);
+	}
+
+	public void borrar(int id) {
+		em.remove(leer(id));
 
 	}
 
-	public ProductoEN leer(String nombre) {
-		em.find(ProductoEN.class, nombre);
+	public List<ProductoEN> obtenerProducto() {
 
-		return null;
+		String jpql = "SELECT p FROM ProductoEN p";
+		Query q = em.createQuery(jpql, ProductoEN.class);
+
+		List<ProductoEN> producto = q.getResultList();
+
+		return producto;
 	}
 
 }

@@ -4,46 +4,115 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	 >
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 
 
 
-	
+
 </h:head>
 
 
 <body>
-<ui:composition template="templates/template2.xhtml">
-
-	
-	<ui:define name="contenido">
-		<h:form>
-	
-	
-	
-	
-	
-	
-	<br/>
-
- <div style="display: flex;">
-      <h:inputText type="search" styleClass="search" pt:placeholder="Search..." />
-      
-	  <h:commandButton value="+ Nuevo Producto" styleClass="dos" action="nuevoProducto.xhtml">
-	  </h:commandButton>
-
-</div>
-	
-</h:form>
+	<ui:composition template="templates/template2.xhtml">
 
 
-	</ui:define>
+		<ui:define name="contenido">
+			<h:form>
+
+				<br />
+
+				<div style="display: flex;">
+					<h:inputText type="search" styleClass="search"
+						pt:placeholder="Search..." />
+
+					<h:commandButton value="+ Nuevo Producto" styleClass="dos"
+						action="nuevoProducto.xhtml">
+					</h:commandButton>
+					<BR/>
+					<h:commandButton value="ACTUALIZAR" styleClass="dos"
+						action="editarProducto.xhtml">
+					</h:commandButton>
+					
+					
+
+				</div>
+
+			</h:form>
+			
+			<h:form>
+				<h:dataTable value="#{productoBeen.productosListados}" var="datosProducto" headerClass="order-table-header" rowClasses="order-table-odd-row,order-table-even-row">
+					<h:column>
+						
+						<f:facet name="header"> CODIGO</f:facet>				
+						<h:outputText value="#{datosProducto.idProducto}" rendered="#{not datosProducto.editable}" /> 
+						
+					</h:column>
+					
+					<h:column>
+						
+						<f:facet name="header"> PRODUCTO</f:facet>					
+    					<h:inputText value="#{datosProducto.nombre}" size="5" rendered="#{datosProducto.editable}" />
+    					<h:outputText value="#{datosProducto.nombre}" rendered="#{not datosProducto.editable}"/>	
+						
+					</h:column>
+					
+					<h:column>
+					
+						<f:facet name="header"> ALBUM</f:facet>
+						<h:inputText value="#{datosProducto.album}" size="5" rendered="#{datosProducto.editable}" />
+    					<h:outputText value="#{datosProducto.album}" rendered="#{not datosProducto.editable}"/>
+    					
+					</h:column>
+					
+					<h:column>
+					
+						<f:facet name="header"> AUTOR</f:facet>
+						<h:inputText value="#{datosProducto.artista}" size="5" rendered="#{datosProducto.editable}" />
+    					<h:outputText value="#{datosProducto.artista}" rendered="#{not datosProducto.editable}"/>
+    					
+					</h:column>
+					
+					<h:column>
+					
+						<f:facet name="header"> AÑO</f:facet>
+						<h:inputText value="#{datosProducto.anio}" size="5" rendered="#{datosProducto.editable}" />
+						<h:outputText value="#{datosProducto.anio}" rendered="#{not datosProducto.editable}"/>
+						
+					</h:column>
+					
+					<h:column>
+						
+						<f:facet name="header"> PRECIO</f:facet>
+						<h:inputText value="#{datosProducto.precio}"  size="5" rendered="#{datosProducto.editable}" />
+						<h:outputText value="#{datosProducto.precio}" rendered="#{not datosProducto.editable}"/>
+						
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header"> EDITAR</f:facet>
+						<h:commandButton action="#{productoBeen.esEditable(datosProducto)}"  value="Editar" rendered="#{not datosProducto.editable}">
+						</h:commandButton>
+						
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header"> ELIMINAR</f:facet>
+						<h:commandButton action="#{productoBeen.eliminar(datosProducto.idProducto)}" immediate="true" value="Eliminar" />
+					</h:column>
+					
+					
+				</h:dataTable>
+				
+				<h:commandButton   action="#{productoBeen.guardarCambios}" value="guardar"/>
+			</h:form>
+
+
+		</ui:define>
 
 
 
-</ui:composition>
+	</ui:composition>
 </body>
 </html>
