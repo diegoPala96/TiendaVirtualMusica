@@ -7,7 +7,7 @@
 	width: 1000px;
 	height: 750px;
 	margin: 0.5em auto;
-	padding: 1em;
+	border: 2px solid #000000;
 }
 
 
@@ -74,14 +74,12 @@ margin-right:auto;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	
-	
 	background-color: #666666;
 	border: 2px solid #ffffff;
 	opacity: 0.3;
 	filter: alpha(opacity = 60); /* For IE8 and earlier */
 	border-radius: 8px;
-	color:bla
+	color: #ffffff;
 	
 }
 
@@ -103,35 +101,16 @@ img {
 
 .search{
 	
-		width: 500px;
+	width: 500px;
 	height: 34px;
-	
+	border-radius: 47px;
 	display: block;
-	
 	background-color: #666666;
-	border: 5px solid #ffffff;
-	opacity: 0.3;
-	
-	filter: alpha(opacity = 60); /* For IE8 and earlier */
+	border: 2px solid #ffffff;
+	color:white;
+	padding-left: 15px;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #horizontal{
@@ -182,12 +161,6 @@ img {
 	width: 100%;
 }
 
-
-
-
-
-
-
 .centro{
 	
 	padding: 2px;
@@ -198,6 +171,34 @@ img {
 	
 	
 }
+
+.tabla{
+	border-collapse:collapse;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tablaCabecera{
+	
+   color: #ff6600;
+   text-align:center;
+   background: #000000;
+   border:1px solid #ffffff;
+   padding:4px;
+	
+}
+
+.tablaCuerpo{
+	
+	color: #ffffff;
+	text-align:center;
+	background: #666666;
+	border: 1px solid #000000;
+    padding:4px;
+}
+
+
 
 
 

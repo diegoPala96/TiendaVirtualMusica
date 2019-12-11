@@ -40,9 +40,11 @@
 				</div>
 
 			</h:form>
+			<br />
+			<br />
 			
 			<h:form>
-				<h:dataTable value="#{productoBeen.productosListados}" var="datosProducto" headerClass="order-table-header" rowClasses="order-table-odd-row,order-table-even-row">
+				<h:dataTable value="#{productoBeen.productosListados}" var="datosProducto" styleClass="tabla" headerClass="tablaCabecera" rowClasses="tablaCuerpo">
 					<h:column>
 						
 						<f:facet name="header"> CODIGO</f:facet>				
@@ -53,7 +55,7 @@
 					<h:column>
 						
 						<f:facet name="header"> PRODUCTO</f:facet>					
-    					<h:inputText value="#{datosProducto.nombre}" size="5" rendered="#{datosProducto.editable}" />
+    					<h:inputText value="#{datosProducto.nombre}" size="8" rendered="#{datosProducto.editable}" />
     					<h:outputText value="#{datosProducto.nombre}" rendered="#{not datosProducto.editable}"/>	
 						
 					</h:column>
@@ -62,14 +64,14 @@
 					
 						<f:facet name="header"> ALBUM</f:facet>
 						<h:inputText value="#{datosProducto.album}" size="5" rendered="#{datosProducto.editable}" />
-    					<h:outputText value="#{datosProducto.album}" rendered="#{not datosProducto.editable}"/>
+    					<h:outputText value="#{datosProducto.album}"  rendered="#{not datosProducto.editable}"/>
     					
 					</h:column>
 					
 					<h:column>
 					
 						<f:facet name="header"> AUTOR</f:facet>
-						<h:inputText value="#{datosProducto.artista}" size="5" rendered="#{datosProducto.editable}" />
+						<h:inputText value="#{datosProducto.artista}" size="8" rendered="#{datosProducto.editable}" />
     					<h:outputText value="#{datosProducto.artista}" rendered="#{not datosProducto.editable}"/>
     					
 					</h:column>
@@ -105,7 +107,6 @@
 					
 				</h:dataTable>
 				
-				<h:commandButton   action="#{productoBeen.guardarCambios}" value="guardar"/>
 			</h:form>
 
 
