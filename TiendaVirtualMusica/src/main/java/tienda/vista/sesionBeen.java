@@ -10,9 +10,9 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
-import tienda.AdministradorON;
-import tienda.ProductoON;
 import tienda.en.ProductoEN;
+import tienda.on.AdministradorON;
+import tienda.on.ProductoON;
 
 @ManagedBean
 @SessionScoped

@@ -1,4 +1,4 @@
-package tienda;
+package tienda.on;
 
 import java.util.List;
 
