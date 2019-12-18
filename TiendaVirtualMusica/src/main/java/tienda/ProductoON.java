@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.servlet.http.Part;
 
 import tienda.dao.ProductoDao;
 import tienda.en.ProductoEN;
@@ -15,6 +16,7 @@ public class ProductoON {
 	private ProductoDao productoDAO;
 
 	public void guardar(ProductoEN producto) {
+		
 		productoDAO.insertar(producto);
 	}
 
@@ -31,7 +33,7 @@ public class ProductoON {
 		}
 	}
 
-	public void editar( ProductoEN producto) {
+	public List<ProductoEN> editar( ProductoEN producto) {
 	//public void editar( int id , String nombre, String album, String duracion,String anio, double precio) {
 //		ProductoEN producto = new ProductoEN();
 //		producto.setIdProducto(id);
@@ -42,9 +44,31 @@ public class ProductoON {
 //		producto.setPrecio(precio);
 //		producto.setEditable(false);
 //		
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+producto.getIdProducto());
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+producto);
+		
 
 		productoDAO.actualizar(producto);
+		
+		return productoDAO.obtenerProducto();
 	}
+	
+	
+	
+	public List<ProductoEN> listarPorNombre(String nombre) {
+		
+		
+		
+		return productoDAO.getProductoPorNombre(nombre);
+		
+		
+		
+	}
+
+	
+	
+	
+	
+	
+	
 
 }

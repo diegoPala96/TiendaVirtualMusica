@@ -1,3 +1,4 @@
+
 package tienda.dao;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ProductoDao {
 	}
 
 	public void actualizar(ProductoEN producto) {
-		//em.refresh(producto);
+		// em.refresh(producto);
 		em.merge(producto);
 
 	}
@@ -45,6 +46,18 @@ public class ProductoDao {
 
 		List<ProductoEN> producto = q.getResultList();
 
+		return producto;
+	}
+
+	public List<ProductoEN> getProductoPorNombre(String nombreBusqueda) {
+		String jpql = "SELECT c FROM ProductoEN c WHERE c.nombre LIKE :nombre ";
+
+		Query q = em.createQuery(jpql, ProductoEN.class);
+		q.setParameter("nombre", "%" + nombreBusqueda + "%");
+
+		List<ProductoEN> producto = q.getResultList();
+
+		
 		return producto;
 	}
 

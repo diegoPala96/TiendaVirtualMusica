@@ -25,19 +25,26 @@
 
 				<div style="display: flex;">
 					<h:inputText type="search" styleClass="search"
-						pt:placeholder="Search..." />
+						pt:placeholder="Search..."   value="#{productoBeen.nombre}" />
 
-					<h:commandButton value="+ Nuevo Producto" styleClass="dos"
-						action="nuevoProducto.xhtml">
-					</h:commandButton>
-					<BR/>
-					<h:commandButton value="ACTUALIZAR" styleClass="dos"
-						action="editarProducto.xhtml">
+						<h:commandButton value="buscar" styleClass="dos"
+						action="#{productoBeen.busqueda(productoBeen.nombre)}">
 					</h:commandButton>
 					
 					
 
 				</div>
+				<br/>
+				
+				<h:commandButton value="+ Nuevo Producto" styleClass="dos"
+						action="#{productoBeen.nuevoproducto()}">
+					</h:commandButton>
+					
+					<h:commandButton value="ACTUALIZAR" styleClass="dos"
+						action="editarProducto.xhtml">
+					</h:commandButton>
+			
+				
 
 			</h:form>
 			<br />

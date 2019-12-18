@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.servlet.http.Part;
 import javax.validation.constraints.NotNull;
 
 import tienda.ProductoON;
 import tienda.en.ProductoEN;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class productoBeen {
 
 	private ProductoEN producto;
@@ -20,7 +22,19 @@ public class productoBeen {
 	@Inject
 	private ProductoON productoON;
 
-	private ArrayList<ProductoEN> productosListados;
+	private ArrayList<ProductoEN> productosListados; 
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	private String nombre;
 
 	@PostConstruct
 	public void init() {
@@ -50,8 +64,9 @@ public class productoBeen {
 
 		productoON.guardar(producto);
 
-		System.out.println(producto);
 
+		System.out.println(producto);
+		init();
 		return null;
 
 	}
@@ -67,33 +82,39 @@ public class productoBeen {
 		}
 	}
 
-	public String guardarCambios() {
 
-//		for (ProductoEN productoEN : productosListados) {
-//			System.out.println("llego: ======   " + productoEN.getNombre());
-//
-//		}
-	//	productoON.editar();
-		return null;
-	}
 
 	public String esEditable(ProductoEN producto) {
 
 		producto.setEditable(true);
 		return null;
 	}
-	
+
 	public String edit() {
-		
-		
-	
 
-
-		//productoON.editar(id, nombre, album,duracion,anio,precio);
-		productoON.editar(producto);
+		productosListados = (ArrayList<ProductoEN>)productoON.editar(producto);
+		init();
 		return null;
 	}
 
-	
+	public String busqueda(String nombreb) {
+
+
+		System.out.println("nombre busqueda: "+ nombreb);
+
+
+		//productoON.editar(id, nombre, album,duracion,anio,precio);
+		productosListados = (ArrayList<ProductoEN>)productoON.listarPorNombre(nombreb);
+		return null;
+	}
+
+	public String  nuevoproducto() {
+
+		producto = new ProductoEN();
+
+		return "nuevoProducto";
+	}
+
+
 
 }

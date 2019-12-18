@@ -3,6 +3,7 @@ package tienda.en;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 public class ProductoEN {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "producto_id")
 	private int idProducto;
 
@@ -33,6 +34,9 @@ public class ProductoEN {
 
 	@NotNull
 	private double precio;
+	
+	
+	//private byte[] imagen;
 
 	private boolean editable;
 

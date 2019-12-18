@@ -19,49 +19,67 @@
 
 
 		<ui:define name="contenido">
-		<br />
-		<h2>PRODUCTO</h2>
-		<br />
+			<br />
+			<h2>PRODUCTO</h2>
+			<br />
+
+
+<!-- 
+			<h:form enctype="multipart/form-data">
+				<h:inputFile >
+				</h:inputFile>
+			</h:form>
+ -->
 			<h:form class="centro">
 
 				<br />
 
-				<h:panelGrid columns="3" >
+				<h:panelGrid columns="3">
+
+
+
 
 					<h:outputText value="Nombre" for="nombre"></h:outputText>
-					<h:inputText value="#{productoBeen.producto.nombre}" styleClass="cajastexto" id="nombre"></h:inputText>
-					<h:message  for="nombre"/>
-						
-					
-					<h:outputText value="Album"  for="album"></h:outputText>
-					<h:inputText  value="#{productoBeen.producto.album}" styleClass="cajastexto" id="album"></h:inputText>
-					<h:message  for="album"/>
-					
-					<h:outputText value="Artista" for = "artista"></h:outputText>
-					<h:inputText value="#{productoBeen.producto.artista}" styleClass="cajastexto" id="artista"></h:inputText>
-					
-					<h:message  for="artista"/>
-					
-					<h:outputText value="Duracion" for ="duracion"></h:outputText>
-					<h:inputText  value="#{productoBeen.producto.duracion}"  styleClass="cajastexto" id="duracion"></h:inputText>
-					<h:message  for="duracion"/>
-					
+					<h:inputText value="#{productoBeen.producto.nombre}"
+						styleClass="cajastexto" id="nombre"></h:inputText>
+					<h:message for="nombre" />
+
+
+					<h:outputText value="Album" for="album"></h:outputText>
+					<h:inputText value="#{productoBeen.producto.album}"
+						styleClass="cajastexto" id="album"></h:inputText>
+					<h:message for="album" />
+
+					<h:outputText value="Artista" for="artista"></h:outputText>
+					<h:inputText value="#{productoBeen.producto.artista}"
+						styleClass="cajastexto" id="artista"></h:inputText>
+
+					<h:message for="artista" />
+
+					<h:outputText value="Duracion" for="duracion"></h:outputText>
+					<h:inputText value="#{productoBeen.producto.duracion}"
+						styleClass="cajastexto" id="duracion"></h:inputText>
+					<h:message for="duracion" />
+
 					<h:outputText value="Año" for="anio"></h:outputText>
-					<h:inputText value="#{productoBeen.producto.anio}"  styleClass="cajastexto" id= "anio"></h:inputText>
-					<h:message  for="anio"/>
-					
+					<h:inputText value="#{productoBeen.producto.anio}"
+						styleClass="cajastexto" id="anio"></h:inputText>
+					<h:message for="anio" />
+
 					<h:outputText value="precio" for="precio"></h:outputText>
-					<h:inputText  value="#{productoBeen.producto.precio}" styleClass="cajastexto" id="precio"></h:inputText>
-					<h:message  for="precio"/>
-					
+					<h:inputText value="#{productoBeen.producto.precio}"
+						styleClass="cajastexto" id="precio"></h:inputText>
+					<h:message for="precio" />
+
 
 
 
 
 
 				</h:panelGrid>
-				<br/>
-				<h:commandButton  action="#{productoBeen.crearProducto()}" value="Crear" class="dos" />
+				<br />
+				<h:commandButton action="#{productoBeen.crearProducto()}"
+					value="Crear" class="dos" />
 
 
 
@@ -72,8 +90,6 @@
 
 
 			</h:form>
-
-
 		</ui:define>
 
 

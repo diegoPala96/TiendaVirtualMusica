@@ -19,13 +19,13 @@
 				<BR />
 				
 		
-				<h:inputText  styleClass="cajastexto"  pt:placeholder="Usuario" >
+				<h:inputText  styleClass="cajastexto"  pt:placeholder="Usuario" value="#{sesionBeen.usuario}" >
 	
 	
 				</h:inputText >
 				<br />
 				<br />
-				<h:inputSecret styleClass="cajastexto" pt:placeholder="contraseña">
+				<h:inputSecret styleClass="cajastexto" pt:placeholder="contraseña" value="#{sesionBeen.password}">
 				
 	
 	
@@ -34,7 +34,9 @@
 				<br/>
 				
 				
-				<h:commandButton  value="login" action="inicio.xhtml"  styleClass="dos" >
+				<h:commandButton  value="login" action="#{sesionBeen.busqueda(sesionBeen.usuario,sesionBeen.password)}"  styleClass="dos"  >
+				</h:commandButton>
+				<h:commandButton  value="productoxhtml" action="producto.xhtml"  styleClass="dos"  >
 				</h:commandButton>
 				
 			
@@ -45,6 +47,8 @@
 	
 			</h:form>
 		</ui:define>
+	
+	
 	
 	
 	
