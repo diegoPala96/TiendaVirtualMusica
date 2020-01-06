@@ -7,7 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
+import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
+import tienda.on.AlbumON;
 import tienda.on.ProductoON;
 
 @ManagedBean
@@ -15,47 +17,46 @@ import tienda.on.ProductoON;
 public class productoBeen {
 
 	private ProductoEN producto;
+	private AlbumEN album;
+	
+
+	private ArrayList<ProductoEN> productosListados;
+	
+	private String nombre;
+	private String temAlbum;
+	
 
 	@Inject
 	private ProductoON productoON;
+	
+	@Inject
+	private AlbumON albumON;
 
-	private ArrayList<ProductoEN> productosListados;
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	private String nombre;
+	
 
 	@PostConstruct
 	public void init() {
 
 		producto = new ProductoEN();
+		album= new AlbumEN();
+
 		productosListados = (ArrayList<ProductoEN>) productoON.obtenerListaProducto();
 
 	}
 
-	public ProductoEN getProducto() {
-		return producto;
-	}
-
-	public void setProducto(ProductoEN producto) {
-		this.producto = producto;
-	}
-
-	public ArrayList<ProductoEN> getProductosListados() {
-		return productosListados;
-	}
-
-	public void setProductosListados(ArrayList<ProductoEN> productosListados) {
-		this.productosListados = productosListados;
-	}
-
 	public String crearProducto() {
+		//System.out.println("fdfnfgkfd----------------------" + temAlbum);
+		//album.setDescripcion(temAlbum);
+		
+		albumON.guardar(album);
+		
+		
+		producto.setAlbum(albumON.artista(album.getDescripcion()));
+		
+		// AlbumEN albumm= new AlbumEN();
+
+		// albumm.setDescripcion("albummanytoone");
+		// producto.setAlbum(many.setDescripcion("jhjh"));
 
 		productoON.guardar(producto);
 
@@ -104,5 +105,48 @@ public class productoBeen {
 
 		return "nuevoProducto";
 	}
+
+	public String getTemAlbum() {
+		return temAlbum;
+	}
+
+	public void setTemAlbum(String temAlbum) {
+		this.temAlbum = temAlbum;
+	}
+
+	public ProductoEN getProducto() {
+		return producto;
+	}
+
+	public void setProducto(ProductoEN producto) {
+		this.producto = producto;
+	}
+
+	public ArrayList<ProductoEN> getProductosListados() {
+		return productosListados;
+	}
+
+	public void setProductosListados(ArrayList<ProductoEN> productosListados) {
+		this.productosListados = productosListados;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public AlbumEN getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(AlbumEN album) {
+		this.album = album;
+	}
+	
+	
+	
 
 }

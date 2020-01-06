@@ -18,9 +18,9 @@
 	<ui:composition template="templates/template2.xhtml">
 
 
-		<ui:define name="contenido">
-			<h:form>
-
+		<ui:define name="contenido" >
+			<h:form  >
+#{sesionBeen.sesionn()}
 				<br />
 
 				<div style="display: flex;">
@@ -70,9 +70,9 @@
 					<h:column>
 					
 						<f:facet name="header"> ALBUM</f:facet>
-						<h:inputText value="#{datosProducto.album}" size="5" rendered="#{datosProducto.editable}" />
-    					<h:outputText value="#{datosProducto.album}"  rendered="#{not datosProducto.editable}"/>
-    					
+					 	<h:inputText value="#{datosProducto.album.descripcion}" size="5" rendered="#{datosProducto.editable}" />
+    					<h:outputText value="#{datosProducto.album.descripcion}"  rendered="#{not datosProducto.editable}"/>
+    					 
 					</h:column>
 					
 					<h:column>

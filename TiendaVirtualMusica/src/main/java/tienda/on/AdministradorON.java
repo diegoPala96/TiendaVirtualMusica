@@ -1,5 +1,6 @@
 package tienda.on;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,19 +15,47 @@ public class AdministradorON {
 	private AdministradorDAO administradorDAO;
 	
 public List<AdministradorEN> listarPorNombre(String nombre, String password) {
+	System.out.println("inicio para loging..................................");		
+	 AdministradorEN administrador = administradorDAO.getUsuarioe(nombre, password);
+
+	
+	if (administrador.getUsuario()!=null) {
+		System.out.println("login nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnno");
 		
-	List<AdministradorEN> administrador = administradorDAO.getUsuarioe(nombre, password);
-	if (administrador!= null) {
-		System.out.println("login nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+	}
+	else {
+		
+		System.out.println("login si");
+	}
+	
+		return null;
+		
+		
 		
 	}
 	
-		return administradorDAO.getUsuarioe(nombre, password);
-		
-		
-		
-	}
+
+
+
+public boolean autenticarDocente(String usuario, String passwd){
 	
+	 List<AdministradorEN> list= administradorDAO.autenticar(usuario, passwd);
+	 if (list.size()>0) {
+		 System.out.println("login correcto");
+		 return true;
+		 
+	 }else {
+		 
+		return false;
+	 }
+	 
+
+	 
+	//return administradorDAO.autenticar(usuario, passwd);
+	
+}
+
+
 	
 	
 

@@ -24,6 +24,12 @@ public class AdministradorEN extends Persona {
 	@NotNull
 	private String password;
 
+	@Override
+	public String toString() {
+		return "AdministradorEN [idAdministrador=" + idAdministrador + ", usuario=" + usuario + ", password=" + password
+				+ "]";
+	}
+
 	public int getId() {
 		return idAdministrador;
 	}

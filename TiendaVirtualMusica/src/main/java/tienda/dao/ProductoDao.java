@@ -45,7 +45,7 @@ public class ProductoDao {
 		Query q = em.createQuery(jpql, ProductoEN.class);
 
 		List<ProductoEN> producto = q.getResultList();
-
+System.out.println(producto+"------------------------");
 		return producto;
 	}
 
@@ -56,7 +56,7 @@ public class ProductoDao {
 		q.setParameter("nombre", "%" + nombreBusqueda + "%");
 
 		List<ProductoEN> producto = q.getResultList();
-
+		System.out.println(producto+"------------------------");
 		
 		return producto;
 	}

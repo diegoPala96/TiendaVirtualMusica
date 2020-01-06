@@ -1,12 +1,21 @@
 package tienda.en;
 
+import java.util.ArrayList;
+
+import javax.annotation.PostConstruct;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 @Entity
 public class ProductoEN {
@@ -20,8 +29,10 @@ public class ProductoEN {
 	@Size(min = 4, max = 30)
 	private String nombre;
 
-	@NotNull
-	private String album;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "album" )
+	private AlbumEN album;
 
 	@NotNull
 	private String artista;
@@ -64,11 +75,12 @@ public class ProductoEN {
 		this.nombre = nombre;
 	}
 
-	public String getAlbum() {
+
+	public AlbumEN getAlbum() {
 		return album;
 	}
 
-	public void setAlbum(String album) {
+	public void setAlbum(AlbumEN album) {
 		this.album = album;
 	}
 
@@ -109,5 +121,29 @@ public class ProductoEN {
 		return "producto [idProducto=" + idProducto + ", nombre=" + nombre + ", album=" + album + ", artista=" + artista
 				+ ", duracion=" + duracion + ", anio=" + anio + "]";
 	}
+
+	
+	
+	@PostConstruct
+	public void init() {
+
+		album = new AlbumEN();
+		
+		//productosListados = (ArrayList<ProductoEN>) productoON.obtenerListaProducto();
+
+	}
+
+//	public void addAlbum(String  descripcion) {
+//		
+//		
+//			if(album==null)
+//				album = new AlbumEN();
+//			
+//			album.setDescripcion(descripcion);
+//			
+//		
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

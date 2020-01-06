@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.swing.JOptionPane;
 import javax.validation.constraints.NotNull;
 
 import tienda.en.ProductoEN;
@@ -24,6 +25,8 @@ public class sesionBeen {
 	
 	private String usuario;
 	private String password;
+	
+	private boolean sesionActiva;
 	
 	
 	public String getUsuario() {
@@ -52,9 +55,36 @@ public class sesionBeen {
 		System.out.println("nombre busqueda: "+ usuario +password);
 
 
-		administradorON.listarPorNombre(usuario, password);
+		//administradorON.listarPorNombre(usuario, password);
+		
+		
+		sesionActiva= administradorON.autenticarDocente(usuario, password);
+		if( sesionActiva == false) {
+			System.out.println("lega uno");
+			
+		}else {
+			System.out.println("llega dos");
+			return "producto";
+		}
+		
+		
 		
 		return null;
+	}
+	
+	
+public String sesionn() {
+	
+		if (sesionActiva== true) {
+			return null;
+			
+		}
+		else {
+			return "login";
+			
+		}
+		
+		
 	}
 	
 

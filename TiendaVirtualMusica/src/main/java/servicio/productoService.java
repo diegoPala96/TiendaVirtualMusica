@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import tienda.en.ProductoEN;
 import tienda.on.ProductoON;
@@ -41,6 +42,15 @@ public class productoService {
 			r.setNombre("error al insertar");
 		}
 		return r;
+
+	}
+	
+	@GET
+	@Path("/listarNombre")
+	@Produces("application/json")
+	public List<ProductoEN> productoNombre(@QueryParam("nombre") String nombre) {
+		System.out.println(nombre+"kkkkkkkkkkkkkkkkk");
+		return productoON.listarPorNombre(nombre);
 
 	}
 
