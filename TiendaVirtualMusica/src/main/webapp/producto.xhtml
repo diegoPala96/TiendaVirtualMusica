@@ -8,7 +8,10 @@
 
 <h:head>
 
-
+<f:metadata>
+		<f:viewParam name="id" value="#{productoBeen.id}"></f:viewParam>
+		<f:viewAction action="#{productoBeen.loadDatos()}"></f:viewAction>
+	</f:metadata>
 
 
 </h:head>
@@ -19,8 +22,12 @@
 
 
 		<ui:define name="contenido" >
+		
+		
+	
 			<h:form  >
-#{sesionBeen.sesionn()}
+			
+
 				<br />
 
 				<div style="display: flex;">
@@ -40,9 +47,7 @@
 						action="#{productoBeen.nuevoproducto()}">
 					</h:commandButton>
 					
-					<h:commandButton value="ACTUALIZAR" styleClass="dos"
-						action="editarProducto.xhtml">
-					</h:commandButton>
+				
 			
 				
 
@@ -55,60 +60,63 @@
 					<h:column>
 						
 						<f:facet name="header"> CODIGO</f:facet>				
-						<h:outputText value="#{datosProducto.idProducto}" rendered="#{not datosProducto.editable}" /> 
+						<!--  <h:outputText value="#{datosProducto.idProducto}" /> -->
+						#{datosProducto.idProducto}
 						
 					</h:column>
 					
 					<h:column>
 						
 						<f:facet name="header"> PRODUCTO</f:facet>					
-    					<h:inputText value="#{datosProducto.nombre}" size="8" rendered="#{datosProducto.editable}" />
-    					<h:outputText value="#{datosProducto.nombre}" rendered="#{not datosProducto.editable}"/>	
+    					
+    					<h:outputText value="#{datosProducto.nombre}"/>	
 						
 					</h:column>
 					
 					<h:column>
 					
 						<f:facet name="header"> ALBUM</f:facet>
-					 	<h:inputText value="#{datosProducto.album.descripcion}" size="5" rendered="#{datosProducto.editable}" />
-    					<h:outputText value="#{datosProducto.album.descripcion}"  rendered="#{not datosProducto.editable}"/>
+					 	
+    					<h:outputText value="#{datosProducto.album.descripcion}" />
     					 
 					</h:column>
 					
 					<h:column>
 					
 						<f:facet name="header"> AUTOR</f:facet>
-						<h:inputText value="#{datosProducto.artista}" size="8" rendered="#{datosProducto.editable}" />
-    					<h:outputText value="#{datosProducto.artista}" rendered="#{not datosProducto.editable}"/>
+				
+    					<h:outputText value="#{datosProducto.artista}" />
     					
 					</h:column>
 					
 					<h:column>
 					
 						<f:facet name="header"> AÑO</f:facet>
-						<h:inputText value="#{datosProducto.anio}" size="5" rendered="#{datosProducto.editable}" />
-						<h:outputText value="#{datosProducto.anio}" rendered="#{not datosProducto.editable}"/>
+					
+						<h:outputText value="#{datosProducto.anio}" />
 						
 					</h:column>
 					
 					<h:column>
 						
 						<f:facet name="header"> PRECIO</f:facet>
-						<h:inputText value="#{datosProducto.precio}"  size="5" rendered="#{datosProducto.editable}" />
-						<h:outputText value="#{datosProducto.precio}" rendered="#{not datosProducto.editable}"/>
+					
+						<h:outputText value="#{datosProducto.precio}"  />
 						
 					</h:column>
 					
 					<h:column>
 						<f:facet name="header"> EDITAR</f:facet>
-						<h:commandButton action="#{productoBeen.esEditable(datosProducto)}"  value="Editar" rendered="#{not datosProducto.editable}">
-						</h:commandButton>
+						
+						
+						<h:commandButton action="#{productoBeen.editar(datosProducto.idProducto)}" immediate="true"  value="Editar"  styleClass="botonTabla"/>
+						
 						
 					</h:column>
 					
 					<h:column>
 						<f:facet name="header"> ELIMINAR</f:facet>
-						<h:commandButton action="#{productoBeen.eliminar(datosProducto.idProducto)}" immediate="true" value="Eliminar" />
+						<h:commandButton action="#{productoBeen.eliminar(datosProducto.idProducto)}" immediate="true" value="Eliminar" styleClass="botonTabla"/>
 					</h:column>
 					
 					

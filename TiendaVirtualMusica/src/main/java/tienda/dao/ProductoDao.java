@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+
 import tienda.en.ProductoEN;
 
 //combirtio a un ejb sin estado
@@ -22,7 +23,10 @@ public class ProductoDao {
 		em.persist(producto);
 
 	}
-
+	public ProductoEN read(int id) {
+		//System.out.println("busqueda de "+id);
+		return em.find(ProductoEN.class, id);
+	}
 	public void actualizar(ProductoEN producto) {
 		// em.refresh(producto);
 		em.merge(producto);

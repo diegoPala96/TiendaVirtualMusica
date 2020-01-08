@@ -9,6 +9,12 @@
 <h:head>
 
 
+<f:metadata>
+		<f:viewParam name="id" value="#{productoBeen.id}"></f:viewParam>
+		<f:viewAction action="#{productoBeen.loadDatos()}" ></f:viewAction>
+	</f:metadata>
+
+
 
 
 </h:head>
@@ -19,6 +25,9 @@
 
 
 		<ui:define name="contenido">
+		
+		
+		
 		<br />
 		<h2>EDITAR-PRODUCTO</h2>
 		<br />
@@ -29,7 +38,8 @@
 				<h:panelGrid columns="3" >
 	
 					<h:outputText value="Id-Producto" for="id"></h:outputText>
-					<h:inputText  value="#{productoBeen.producto.idProducto}" styleClass="cajastexto" id="id"></h:inputText>
+					#{productoBeen.producto.idProducto}
+					
 					<h:message  for="id"/>
 					
 					<h:outputText value="Nombre" for="nombre"></h:outputText>
@@ -38,7 +48,7 @@
 						
 					
 					<h:outputText value="Album"  for="album"></h:outputText>
-					<h:inputText  value="#{productoBeen.producto.album}" styleClass="cajastexto" id="album"></h:inputText>
+					<h:inputText  value="#{productoBeen.producto.album.descripcion}" styleClass="cajastexto" id="album"></h:inputText>
 					<h:message  for="album"/>
 					
 					<h:outputText value="Artista" for = "artista"></h:outputText>

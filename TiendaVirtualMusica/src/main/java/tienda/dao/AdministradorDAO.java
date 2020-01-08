@@ -19,41 +19,23 @@ public class AdministradorDAO {
 	@Inject
 	private EntityManager em;
 
-	
-
 
 	
-
 	
-
-	
-
-	public AdministradorEN getUsuarioe(String usuario,String password) {
-		String jpql = "SELECT c FROM AdministradorEN c WHERE c.usuario =:usuario AND c.password =:password ";
-	
-		
-
-		//System.out.println("uno..: "+jpql);
-
-		Query q = em.createQuery(jpql, AdministradorEN.class);
-		q.setParameter("usuario",   usuario );
-		q.setParameter("password", password  );
-
-		AdministradorEN administrador = (AdministradorEN) q.getSingleResult();
-		System.out.println("dos");
-		
-		return administrador;
-	}
-	
-	
-	
-	public List<AdministradorEN> autenticar(String usuario, String passwd) {
+	public AdministradorEN autenticar(String usuario, String passwd) {
 		String jpql = "SELECT c FROM AdministradorEN c "
 				+ " WHERE c.usuario=:usuario AND c.password=:passwd"; 
 		Query query = em.createQuery(jpql, AdministradorEN.class);
 		query.setParameter("usuario", usuario);
 		query.setParameter("passwd", passwd);
-		List<AdministradorEN> admin = query.getResultList();
+		AdministradorEN admin = null;
+		try {
+			admin=	(AdministradorEN)query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+			
 		
 		
 		return admin;

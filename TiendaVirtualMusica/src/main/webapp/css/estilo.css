@@ -69,8 +69,26 @@ margin-right:auto;
 	border-radius: 8px;
 }
 
+
+
+.botonTabla {
+	
+	
+	display: block;	
+	width:90%;
+margin-left:auto;
+margin-right:auto;
+padding: 0.2;
+	
+	background-color: #ff6600;
+	border: 2px solid #ffffff;
+	border-radius: 8px;
+}
+
+
 .cajastexto{
 	
+	padding-left:2%;
 	width: 250px;
 	height: 34px;
 	display: block;

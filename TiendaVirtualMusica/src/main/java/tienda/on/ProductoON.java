@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+
 import tienda.dao.ProductoDao;
 import tienda.en.ProductoEN;
 
@@ -45,6 +46,13 @@ public class ProductoON {
 
 		return productoDAO.getProductoPorNombre(nombre);
 
+	}
+	
+	public ProductoEN getProducto(int codigo) {
+		ProductoEN aux = productoDAO.read(codigo);
+		System.out.println(aux);
+		return aux;
+		
 	}
 
 }
