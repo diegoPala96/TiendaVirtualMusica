@@ -192,6 +192,21 @@ img {
 	
 }
 
+
+.cargaImagen{
+	
+	padding: 2px;
+	display: block;
+	width: 50%;
+
+	margin: auto;
+	align-content: center; 	
+	
+	
+}
+
+
+
 .tabla{
 	border-collapse:collapse;
 	width: 90%;

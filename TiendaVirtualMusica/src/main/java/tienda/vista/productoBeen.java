@@ -1,25 +1,54 @@
 package tienda.vista;
 
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.http.Part;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
 import tienda.on.AlbumON;
 import tienda.on.ProductoON;
 
+
+
+
+
+
+
+
 @ManagedBean
 @SessionScoped
-public class productoBeen {
+//@Named()
+//@RequestScoped
+public class productoBeen  implements Serializable{
 
 	private ProductoEN producto;
 	private AlbumEN album;
+	
+	@Inject
+	private ProductoON productoON;
+	
+	@Inject
+	private AlbumON albumON;
+
 	
 
 	private ArrayList<ProductoEN> productosListados;
@@ -27,6 +56,17 @@ public class productoBeen {
 	private String nombre;
 	private String temAlbum;
 	
+	private String imagenProducto;
+	
+	public String getImagenProducto() {
+		return imagenProducto;
+	}
+
+
+	public void setImagenProducto(String imagenProducto) {
+		this.imagenProducto = imagenProducto;
+	}
+
 	private int id;
 	
 
@@ -39,12 +79,7 @@ public class productoBeen {
 		this.id = id;
 	}
 
-	@Inject
-	private ProductoON productoON;
 	
-	@Inject
-	private AlbumON albumON;
-
 	
 
 	@PostConstruct
@@ -57,33 +92,21 @@ public class productoBeen {
 
 	}
 	
-	
-//	public String editar(String id) {
-//		
-//		System.out.println("buscar +"+id);
-//	//	return "TipoGeografia?faces-redirect=true&id=" + id;
-//		return "editarproducto";
-//	}
+
 
 	
 	
 
 
 	public String crearProducto() {
-		//System.out.println("fdfnfgkfd----------------------" + temAlbum);
-		//album.setDescripcion(temAlbum);
 		
-		albumON.guardar(album);
-		
-		
-		producto.setAlbum(albumON.artista(album.getDescripcion()));
-		
+	
 		// AlbumEN albumm= new AlbumEN();
 
 		// albumm.setDescripcion("albummanytoone");
 		// producto.setAlbum(many.setDescripcion("jhjh"));
 
-		productoON.guardar(producto);
+		productoON.guardar(producto, album);
 
 		System.out.println(producto);
 		init();
@@ -102,11 +125,7 @@ public class productoBeen {
 		}
 	}
 
-	public String esEditable(ProductoEN producto) {
 
-		producto.setEditable(true);
-		return null;
-	}
 
 	public String edit() {
 		
@@ -115,7 +134,7 @@ public class productoBeen {
 		producto.setAlbum(albumON.artista(album.getDescripcion()));
 		productosListados = (ArrayList<ProductoEN>) productoON.editar(producto);
 		init();
-		return null;
+		return "producto";
 	}
 
 	public String busqueda(String nombreb) {
@@ -173,12 +192,12 @@ public class productoBeen {
 	public void setAlbum(AlbumEN album) {
 		this.album = album;
 	}
-	
 
 	
 	public void loadDatos() {
 		if(id==0)
 			return;
+		
 		System.out.println("codigo editar dos " + this.id);
 		producto = productoON.getProducto(this.id);
 		System.out.println("recupera");
@@ -202,6 +221,81 @@ public class productoBeen {
 		
 		return "editarProducto?faces-redirect=true&id="+codigo;
 	}
+
+  
+	/**
+	 * Metodo para subir imagen al servidor
+	 * @param event
+	 */
+//	public void subirImagen(FileUploadEvent event) {
+//		
+//		System.out.println("dosss");
+//		try {
+//			producto.setImagenProd(event.getFile().getContents());
+//			imagenProducto=UtilJSF.guardaBlobEnFicheroTemporal(producto.getImagenProd(),
+//					event.getFile().getFileName());
+//			
+//		} catch (Exception e) {
+//			System.out.println("error al cargar la imagen productobeen");
+//		}
+//		
+//		
+//	}
+	
+	
+	
+	
+
+//	public void listener(FileUploadEvent event) throws Exception {
+//        UploadedFile item = event.getFile();
+//        producto.setImagenProd(item.getContents());
+//     System.out.println("imagen");
+//       
+//
+//    }
+	
+
+	
+	private Part uploadedFile;
+	private String folder = "c:\\files";
+
+	public Part getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(Part uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+	
+	public void saveFile(){
+		
+		try (InputStream input = uploadedFile.getInputStream()) {
+			String fileName = uploadedFile.getSubmittedFileName();
+			System.out.println(folder+"\\"+fileName);
+			String path=folder+"\\"+fileName;
+			
+			
+			
+			Files.copy(input, new File(folder, fileName).toPath());
+			
+			
+			
+			File fi = new File(path);
+			
+			// Files.readAllBytes(Path);
+			
+	        
+	        producto.setImagenProd(Files.readAllBytes(fi.toPath()));
+	    }
+	    catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	
+	
+	}
+	
+	
 	
 	
 	

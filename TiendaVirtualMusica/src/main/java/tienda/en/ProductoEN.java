@@ -1,5 +1,6 @@
 package tienda.en;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
@@ -11,14 +12,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
 @Entity
-public class ProductoEN {
+public class ProductoEN  implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,18 +48,12 @@ public class ProductoEN {
 	@NotNull
 	private double precio;
 	
+
 	
-	//private byte[] imagen;
+	@Lob()
+	private byte[] imagenProd;
 
-	private boolean editable;
 
-	public boolean isEditable() {
-		return editable;
-	}
-
-	public void setEditable(boolean editable) {
-		this.editable = editable;
-	}
 
 	public int getIdProducto() {
 		return idProducto;
@@ -116,6 +112,16 @@ public class ProductoEN {
 		this.precio = precio;
 	}
 
+
+
+	public byte[] getImagenProd() {
+		return imagenProd;
+	}
+
+	public void setImagenProd(byte[] imagenProd) {
+		this.imagenProd = imagenProd;
+	}
+
 	@Override
 	public String toString() {
 		return "producto [idProducto=" + idProducto + ", nombre=" + nombre + ", album=" + album + ", artista=" + artista
@@ -133,17 +139,5 @@ public class ProductoEN {
 
 	}
 
-//	public void addAlbum(String  descripcion) {
-//		
-//		
-//			if(album==null)
-//				album = new AlbumEN();
-//			
-//			album.setDescripcion(descripcion);
-//			
-//		
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 }

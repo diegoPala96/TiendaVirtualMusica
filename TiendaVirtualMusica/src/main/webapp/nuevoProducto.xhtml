@@ -4,7 +4,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
+	>
+	
+	
+	
 
 <h:head>
 
@@ -21,19 +25,21 @@
 		<ui:define name="contenido">
 			<br />
 			<h2>PRODUCTO</h2>
+		
 			<br />
 
 
-<!-- 
-			<h:form enctype="multipart/form-data">
-				<h:inputFile >
-				</h:inputFile>
-			</h:form>
- -->
-			<h:form class="centro">
+
+ 
+			<h:form class="centro" enctype="multipart/form-data" >
+			
+			 <h:inputFile value="#{productoBeen.uploadedFile}">
+        <f:ajax listener="#{productoBeen.saveFile()}" />
+    </h:inputFile>
 
 				<br />
-
+					
+	
 				<h:panelGrid columns="3">
 
 
@@ -66,15 +72,18 @@
 						styleClass="cajastexto" id="anio"></h:inputText>
 					<h:message for="anio" />
 
-					<h:outputText value="precio" for="precio"></h:outputText>
+					<h:outputText value="Precio" for="precio"></h:outputText>
 					<h:inputText value="#{productoBeen.producto.precio}"
 						styleClass="cajastexto" id="precio"></h:inputText>
 					<h:message for="precio" />
+					
+					<h:outputText value="Imagen:" for="imagen"></h:outputText>
+					
+					
 
 
 
-
-
+				
 
 				</h:panelGrid>
 				<br />
@@ -86,10 +95,17 @@
 
 
 				<br />
+			
 
 
+					
+			
+		
 
 			</h:form>
+			
+			
+			
 		</ui:define>
 
 

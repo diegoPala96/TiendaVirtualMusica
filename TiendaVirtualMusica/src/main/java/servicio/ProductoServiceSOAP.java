@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
 import tienda.on.ProductoON;
 
@@ -29,11 +30,11 @@ public class ProductoServiceSOAP {
 	}
 
 	@WebMethod
-	public Respuesta crearProducto(ProductoEN productoEN) {
+	public Respuesta crearProducto(ProductoEN productoEN, AlbumEN albumEN) {
 		Respuesta r = new Respuesta();
 		try {
 
-			productoON.guardar(productoEN);
+			productoON.guardar(productoEN, albumEN);
 			r.setNombre("insercion correcta");
 
 		} catch (Exception e) {

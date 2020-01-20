@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.control.RequestContextController;
+//import javax.enterprise.context.control.RequestContextController;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -12,14 +12,14 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 //import org.primefaces.context.RequestContext;
 
 import tienda.en.AdministradorEN;
 
 import tienda.on.AdministradorON;
-import util.SessionUtils;
+
 
 
 @ManagedBean
@@ -68,8 +68,8 @@ public class sesionBeen {
 		
 		
 		 if(administrador != null) {
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("username", administrador);
+		//	HttpSession session = SessionUtils.getSession();
+			//session.setAttribute("username", administrador);
 			//return "crear-alumno";
 			
 

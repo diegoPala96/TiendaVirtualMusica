@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
 import tienda.on.ProductoON;
 
@@ -28,22 +29,22 @@ public class productoService {
 
 	}
 
-	@POST
-	@Produces("application/json")
-	@Consumes("application/json")
-	public Respuesta crearProducto(ProductoEN productoEN) {
-		Respuesta r = new Respuesta();
-		try {
-
-			productoON.guardar(productoEN);
-			r.setNombre("insercion correcta");
-
-		} catch (Exception e) {
-			r.setNombre("error al insertar");
-		}
-		return r;
-
-	}
+//	@POST
+//	@Produces("application/json")
+//	@Consumes("application/json")
+//	public Respuesta crearProducto(ProductoEN productoEN ,AlbumEN albumEN) {
+//		Respuesta r = new Respuesta();
+//		try {
+//
+//			productoON.guardar(productoEN, albumEN);
+//			r.setNombre("insercion correcta");
+//
+//		} catch (Exception e) {
+//			r.setNombre("error al insertar");
+//		}
+//		return r;
+//
+//	}
 	
 	@GET
 	@Path("/listarNombre")

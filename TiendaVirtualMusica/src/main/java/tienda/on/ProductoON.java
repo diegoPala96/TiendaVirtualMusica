@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 
 import tienda.dao.ProductoDao;
+import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
 
 @Stateless
@@ -14,9 +15,17 @@ public class ProductoON {
 
 	@Inject
 	private ProductoDao productoDAO;
+	
+	@Inject
+	private AlbumON albumON;
 
-	public void guardar(ProductoEN producto) {
+	public void guardar(ProductoEN producto , AlbumEN album) {
 
+		albumON.guardar(album);
+		
+		
+		producto.setAlbum(albumON.artista(album.getDescripcion()));
+		
 		productoDAO.insertar(producto);
 	}
 
@@ -54,5 +63,8 @@ public class ProductoON {
 		return aux;
 		
 	}
+	
+	
+
 
 }
