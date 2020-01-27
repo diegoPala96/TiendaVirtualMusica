@@ -1,6 +1,10 @@
 package tienda.vista;
 
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,12 +19,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.UploadedFile;
+import com.ibm.wsdl.util.IOUtils;
 
 import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
@@ -271,22 +275,42 @@ public class productoBeen  implements Serializable{
 	public void saveFile(){
 		
 		try (InputStream input = uploadedFile.getInputStream()) {
-			String fileName = uploadedFile.getSubmittedFileName();
-			System.out.println(folder+"\\"+fileName);
-			String path=folder+"\\"+fileName;
-			
-			
-			
-			Files.copy(input, new File(folder, fileName).toPath());
-			
-			
-			
-			File fi = new File(path);
-			
-			// Files.readAllBytes(Path);
+//			String fileName = uploadedFile.getSubmittedFileName();
+//			System.out.println(folder+"\\"+fileName);
+//			String path=folder+"\\"+fileName;
+//			
+//			
+//			
+//			//Files.copy(input, new File(folder, fileName).toPath());
+//	
+//			
+//			
+//			File fi = new File(path);
+//			toByteArray(input);
+//			// Files.readAllBytes(Path);
 			
 	        
-	        producto.setImagenProd(Files.readAllBytes(fi.toPath()));
+	        producto.setImagenProd(toByteArray(input));
+	        
+	        
+	      
+
+	    
+	        ByteArrayInputStream bis = new ByteArrayInputStream(producto.getImagenProd());
+	        BufferedImage bImage2 = ImageIO.read(bis);
+	        ImageIO.write(bImage2, "jpg", new File(folder,"output.jpg") );
+
+	        
+	        
+	        
+	        
+	        
+	  
+	   
+	        
+	        
+	        
+	        
 	    }
 	    catch (IOException e) {
 	        e.printStackTrace();
@@ -294,6 +318,26 @@ public class productoBeen  implements Serializable{
 	
 	
 	}
+
+
+	public static byte[] toByteArray(InputStream in) throws IOException {
+
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+
+		byte[] buffer = new byte[1024];
+		int len;
+
+		// read bytes from the input stream and store them in buffer
+		while ((len = in.read(buffer)) != -1) {
+			// write bytes from the buffer into output stream
+			os.write(buffer, 0, len);
+		}
+
+		return os.toByteArray();
+	}
+	
+	
+	
 	
 	
 	

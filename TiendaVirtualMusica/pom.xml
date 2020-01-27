@@ -115,12 +115,18 @@
 </dependency>
 
 <dependency>
+
+
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces</artifactId>
                 <version>5.3</version>
             </dependency>
     
-    
+<dependency>
+    <groupId>org.omnifaces</groupId>
+    <artifactId>omnifaces</artifactId>
+    <version>3.4.1</version>
+</dependency>    
 
         <!-- First declare the APIs we depend on and need for compilation. All 
             of them are provided by JBoss WildFly -->

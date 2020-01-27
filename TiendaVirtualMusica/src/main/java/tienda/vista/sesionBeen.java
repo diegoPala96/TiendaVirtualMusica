@@ -13,12 +13,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 //import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 //import org.primefaces.context.RequestContext;
 
 import tienda.en.AdministradorEN;
 
 import tienda.on.AdministradorON;
+import util.SessionUtils;
 
 
 
@@ -68,8 +70,8 @@ public class sesionBeen {
 		
 		
 		 if(administrador != null) {
-		//	HttpSession session = SessionUtils.getSession();
-			//session.setAttribute("username", administrador);
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("username", administrador.getNombre());
 			//return "crear-alumno";
 			
 

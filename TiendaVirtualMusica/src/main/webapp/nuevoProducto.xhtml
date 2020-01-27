@@ -33,7 +33,7 @@
  
 			<h:form class="centro" enctype="multipart/form-data" >
 			
-			 <h:inputFile value="#{productoBeen.uploadedFile}">
+			 <h:inputFile value="#{productoBeen.uploadedFile}" >
         <f:ajax listener="#{productoBeen.saveFile()}" />
     </h:inputFile>
 

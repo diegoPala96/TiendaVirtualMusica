@@ -1,16 +1,128 @@
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:o="http://omnifaces.org/ui"
+xmlns:of="http://omnifaces.org/functions"
+
+xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+
+<f:metadata>
+		<f:viewParam name="id" value="#{productoBeen.id}"></f:viewParam>
+		<f:viewAction action="#{productoBeen.loadDatos()}"></f:viewAction>
+	</f:metadata>
 
 
-	<ui:composition template="templates/template2.xhtml"
-		xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:h="http://java.sun.com/jsf/html">
+</h:head>
+
+
+<body>
+	<ui:composition template="templates/template2.xhtml">
+
+
+		<ui:define name="contenido" >
+		
+		
 	
-		<ui:define name="contenido">
-			<p>contenido inicio</p>
+			<h:form  >
+			
+
+				<br />
+
+				
+				<br/>
+				
+				<h:commandButton value="+ Nuevo Producto" styleClass="dos"
+						action="#{productoBeen.nuevoproducto()}">
+					</h:commandButton>
+					
+				
+			
+				
+
+			</h:form>
+			<br />
+			<br />
+			
+			<h:form>
+				<h:dataTable value="#{productoBeen.productosListados}" var="datosProducto" styleClass="tabla" headerClass="tablaCabecera" rowClasses="tablaCuerpo">
+					<h:column>
+						
+						<f:facet name="header"> CODIGO</f:facet>				
+						<!--  <h:outputText value="#{datosProducto.idProducto}" /> -->
+						#{datosProducto.idProducto}
+						
+					</h:column>
+					
+					<h:column>
+						
+						<f:facet name="header"> PRODUCTO</f:facet>					
+    					
+    					<h:outputText value="#{datosProducto.nombre}"/>	
+						
+					</h:column>
+					
+					
+					
+					<h:column>
+					
+						<f:facet name="header"> ALBUM</f:facet>
+					 	
+    					<h:outputText value="#{datosProducto.album.descripcion}" />
+    					 
+					</h:column>
+					
+					<h:column>
+					
+						<f:facet name="header"> AUTOR</f:facet>
+				
+    				 
+    					
+					</h:column>
+					
+					
+					
+					<p:column>
+			<p:graphicImage value="#{imageBean.imageFromDB}">
+			</p:graphicImage>
+		</p:column>
+		
+		
+		
+					<h:column>
+					
+						<f:facet name="header"> AÑO</f:facet>
+					
+						<h:outputText value="#{datosProducto.anio}" />
+						
+					</h:column>
+					
+					<h:column>
+						
+						<f:facet name="header"> PRECIO</f:facet>
+					
+						<h:outputText value="#{datosProducto.precio}"  />
+						
+					</h:column>
+					
+				
+					
+					
+				</h:dataTable>
+				
+			</h:form>
+
+
 		</ui:define>
-	
-	
-	
+
+
+
 	</ui:composition>
+</body>
+</html>
