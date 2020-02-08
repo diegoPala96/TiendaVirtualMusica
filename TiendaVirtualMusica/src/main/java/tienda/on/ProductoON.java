@@ -1,14 +1,16 @@
 package tienda.on;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-
+import javax.xml.bind.DatatypeConverter;
 
 import tienda.dao.ProductoDao;
 import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
+import tienda.en.ProductoMovil;
 
 @Stateless
 public class ProductoON {
@@ -73,6 +75,36 @@ public byte[] getProductoImagen(String codigo) {
 	
 		
 	}
+
+public List<ProductoMovil> obtenerListaProductoMovil() {
+	
+	List<ProductoEN>productosWeb=productoDAO.obtenerProducto();
+	
+	List<ProductoMovil> productosMovil= new ArrayList<>();
+	
+	for (ProductoEN producto :productosWeb ) {
+		ProductoMovil movil = new ProductoMovil();
+
+		movil.setIdProducto(producto.getIdProducto());
+		movil.setNombre(producto.getNombre());
+		movil.setArtista(producto.getArtista());
+		//movil.setAlbum(producto.getAlbum());
+		movil.setAnio(producto.getAnio());
+		movil.setDuracion(producto.getDuracion());
+		movil.setPrecio(producto.getPrecio());
+		
+		 String base64Encoded = DatatypeConverter.printBase64Binary(producto.getImagenProd());
+		 movil.setImagenProd(base64Encoded);
+
+
+		productosMovil.add(movil);
+	}
+	
+	
+	
+	
+	return productosMovil;
+}
 	
 
 

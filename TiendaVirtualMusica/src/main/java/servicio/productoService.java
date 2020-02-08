@@ -12,6 +12,7 @@ import javax.ws.rs.QueryParam;
 
 import tienda.en.AlbumEN;
 import tienda.en.ProductoEN;
+import tienda.en.ProductoMovil;
 import tienda.on.ProductoON;
 
 @Path("/producto")
@@ -52,6 +53,25 @@ public class productoService {
 	public List<ProductoEN> productoNombre(@QueryParam("nombre") String nombre) {
 		System.out.println(nombre+"kkkkkkkkkkkkkkkkk");
 		return productoON.listarPorNombre(nombre);
+
+	}
+	
+	
+	@GET
+	@Path("listarProducto")
+	@Produces("application/json")
+	public List<ProductoMovil> getProductos() {
+		System.out.println("llega servicio");
+
+		List<ProductoMovil> productosMovil = productoON.obtenerListaProductoMovil();
+		System.out.println("fin servicio"+productosMovil);
+
+		
+
+	
+		
+//System.out.println(pro.get(0));
+		return productosMovil;
 
 	}
 
