@@ -63,7 +63,16 @@ public class ProductoON {
 		return aux;
 		
 	}
+public byte[] getProductoImagen(String codigo) {
+		
+		
+		ProductoEN aux = productoDAO.read(Integer.parseInt(codigo));
+		System.out.println(aux);
+		
+		return aux.getImagenProd();
 	
+		
+	}
 	
 
 

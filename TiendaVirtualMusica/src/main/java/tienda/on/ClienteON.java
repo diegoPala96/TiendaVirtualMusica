@@ -24,5 +24,15 @@ public class ClienteON {
 	public List<ClienteEN> getListarCliente() {
 		return clienteDAO.getCliente();
 	}
+	
+	
+	public ClienteEN login(String user, String pass) {
+		
+	ClienteEN cli=	clienteDAO.validarLogin(user, pass);
+		//System.out.println(cli.getNombre()+"yyyyyyyyyyyyyyyyy");
+		
+		
+		return  	cli;
+	}
 
 }

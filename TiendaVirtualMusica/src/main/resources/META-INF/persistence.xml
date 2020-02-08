@@ -28,7 +28,7 @@
       
       <!--  <jta-data-source>java:jboss/datasources/TiendaVirtualMusicaDS</jta-data-source>
      -->
-     <jta-data-source>java:jboss/datasources/ejPostgresDS</jta-data-source>
+     <jta-data-source>java:jboss/datasources/proyecto</jta-data-source>
      
         <properties>
          <!-- Properties for Hibernate -->

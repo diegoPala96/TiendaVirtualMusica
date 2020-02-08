@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import tienda.en.ClienteEN;
@@ -42,4 +43,20 @@ public class ClienteServicio {
 		return cliente;
 	}
 
+	
+	
+	
+	
+	
+	
+	@POST
+	@Path("/logeo/{user}/{pass}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public ClienteEN login(@PathParam("user") String user, @PathParam("pass") String pass) {
+
+		System.out.println("llega solicitud login cliente: " + "user: " + user + " pass: " + pass);
+
+		return clienteON.login(user, pass);
+	}
 }

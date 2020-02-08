@@ -40,5 +40,22 @@ public class ClienteDAO {
 		List<ClienteEN> cliente = q.getResultList();
 		return cliente;
 	}
+	
+	
+	public ClienteEN validarLogin(String user, String pass) {
+
+		String jpql = "SELECT c FROM ClienteEN c WHERE c.usuario =:usuario AND c.password =:password";
+
+		System.out.println("llege cliente dao");
+		Query q = em.createQuery(jpql, ClienteEN.class);
+		q.setParameter("usuario", user);
+		q.setParameter("password", pass);
+
+		
+		
+		return (ClienteEN) q.getSingleResult();
+
+	}
+	
 
 }

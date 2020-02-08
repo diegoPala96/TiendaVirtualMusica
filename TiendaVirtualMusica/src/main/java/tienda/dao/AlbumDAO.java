@@ -71,10 +71,10 @@ public class AlbumDAO {
 	}
 	
 	public AlbumEN getNombreArtista(String nombre) {
-		String jpql = "SELECT c FROM AlbumEN c WHERE c.descripcion LIKE :nombre ";
+		String jpql = "SELECT c FROM AlbumEN c WHERE c.descripcion = :nombre ";
 
 		Query q = em.createQuery(jpql, AlbumEN.class);
-		q.setParameter("nombre", "%" + nombre + "%");
+		q.setParameter("nombre", nombre );
 
 		AlbumEN producto =  (AlbumEN) q.getSingleResult();
 

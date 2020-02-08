@@ -104,6 +104,13 @@ public class productoBeen  implements Serializable{
 
 	public String crearProducto() {
 		
+		
+		try (InputStream input = uploadedFile.getInputStream()) {
+			producto.setImagenProd(toByteArray(input));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	
 		// AlbumEN albumm= new AlbumEN();
 
@@ -323,8 +330,18 @@ public class productoBeen  implements Serializable{
 	public static byte[] toByteArray(InputStream in) throws IOException {
 
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		
+System.out.println("tamano imagen ");
+		
 
-		byte[] buffer = new byte[1024];
+
+
+//byte[] imageInBytes = IOUtils.toByteArray(in);
+
+
+
+		byte[] buffer = new byte[2048];
+		
 		int len;
 
 		// read bytes from the input stream and store them in buffer
