@@ -12,7 +12,7 @@ public class CarroCompraDAO {
 	@Inject
 	private EntityManager em;
 
-//	public List<CarroCompraEN> obtenerProducto() {
+//	public List<CarroCompraEN> obtenerProducto(int id) {
 //
 //		String jpql = "SELECT p FROM CarroCompraEN p where clienteEn =: idciente ";
 //		Query q = em.createQuery(jpql, ProductoEN.class);
@@ -23,16 +23,30 @@ public class CarroCompraDAO {
 //	}
 
 	public void create(CarroCompraEN c) {
+		System.out.println("llama create");
 		em.persist(c);
 	}
+
 //
-//	public CarroCompraEN read(String cedula) {
-//		return em.find(CarroCompraEN.class, cedula);
-//	}
+	public CarroCompraEN read(int idCarro) {
+
+		return em.find(CarroCompraEN.class, idCarro);
+	}
+
 //
-//	public void update(CarroCompraEN c) {
-//		em.merge(c);
-//	}
+	public void update(CarroCompraEN c) {
+		System.out.println("llama uodate");
+		em.merge(c);
+	}
+
+	public void save(CarroCompraEN p) {
+		if (this.read(p.getIdCliente()) != null)
+			this.update(p);
+		else
+			this.create(p);
+
+	}
+
 //
 //	public void delete(String cedula) {
 //		CarroCompraEN c = read(cedula);
@@ -48,7 +62,7 @@ public class CarroCompraDAO {
 //		return cliente;
 //	}
 //
-//	public CarroCompraEN validarLogin(String user, String pass) {
+//	public CarroCompraEN obtenerCarro(String user, String pass) {
 //
 //		String jpql = "SELECT c FROM CarroCompraEN c WHERE c.usuario =:usuario AND c.password =:password";
 //
