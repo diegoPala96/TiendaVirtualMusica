@@ -15,12 +15,23 @@ import tienda.en.ProductoEN;
 import tienda.en.ProductoMovil;
 import tienda.on.ProductoON;
 
+/**
+ * servicio para producto listar
+ * 
+ * @author Diego,Rotman
+ *
+ */
 @Path("/producto")
 public class productoService {
 
 	@Inject
 	private ProductoON productoON;
 
+	/**
+	 * Servicio para obtener un listado completo de los producto
+	 * 
+	 * @return lista de producto
+	 */
 	@GET
 	@Path("listar")
 	@Produces("application/json")
@@ -30,33 +41,25 @@ public class productoService {
 
 	}
 
-//	@POST
-//	@Produces("application/json")
-//	@Consumes("application/json")
-//	public Respuesta crearProducto(ProductoEN productoEN ,AlbumEN albumEN) {
-//		Respuesta r = new Respuesta();
-//		try {
-//
-//			productoON.guardar(productoEN, albumEN);
-//			r.setNombre("insercion correcta");
-//
-//		} catch (Exception e) {
-//			r.setNombre("error al insertar");
-//		}
-//		return r;
-//
-//	}
 	
+	/**
+	 *  petodo para la busqueda segun el nombre de canciones
+	 * @param nombre nombre a buscar
+	 * @return una lista de los productos 
+	 */
 	@GET
 	@Path("/listarNombre")
 	@Produces("application/json")
 	public List<ProductoEN> productoNombre(@QueryParam("nombre") String nombre) {
-		System.out.println(nombre+"kkkkkkkkkkkkkkkkk");
 		return productoON.listarPorNombre(nombre);
 
 	}
+
 	
-	
+	/**
+	 * metod para pasar los producto al cliente en formato jsons se necesito crear un modelo con string
+	 * @return un modelo de productoEN con la imagen codificada
+	 */
 	@GET
 	@Path("listarProducto")
 	@Produces("application/json")
@@ -64,15 +67,15 @@ public class productoService {
 		System.out.println("llega servicio");
 
 		List<ProductoMovil> productosMovil = productoON.obtenerListaProductoMovil();
-		System.out.println("fin servicio"+productosMovil);
+		System.out.println("fin servicio" + productosMovil);
 
-		
 
-	
-		
-//System.out.println(pro.get(0));
 		return productosMovil;
 
 	}
+	
+	
+	
+	
 
 }

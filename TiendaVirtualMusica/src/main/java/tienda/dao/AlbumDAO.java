@@ -30,7 +30,10 @@ public class AlbumDAO {
 
 	}
 	
-	
+	/**
+	 * actualizar AlbumEN
+	 * @param album
+	 */
 	public void actualizar(AlbumEN album) {
 		// em.refresh(producto);
 		em.merge(album);

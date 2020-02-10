@@ -2,6 +2,7 @@ package servicio;
 
 import java.util.List;
 
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,6 +13,11 @@ import javax.ws.rs.Produces;
 
 import tienda.en.ClienteEN;
 import tienda.on.ClienteON;
+/**
+ * servicio clieente
+ * @author Diego , Rotman
+ *
+ */
 
 @Path("/cliente")
 public class ClienteServicio {

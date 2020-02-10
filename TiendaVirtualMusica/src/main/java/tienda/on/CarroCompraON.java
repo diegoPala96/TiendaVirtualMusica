@@ -90,6 +90,88 @@ public class CarroCompraON {
 		// carroCompraDAO.save(carroCompraEN);
 
 	}
+	
+	public void eliminarCarrito(String idProducto, String idCliente) {
+
+		carroCompraEN = new CarroCompraEN();
+
+
+				carroCompraEN = carroCompraDAO.read(Integer.parseInt(idCliente));
+				
+				List<ProductoEN> listaProducto = new ArrayList<>();
+			listaProducto=	carroCompraEN.getCarroList();
+			
+			List<ProductoEN> listaProducto2 = new ArrayList<>();
+			for (ProductoEN productoEN : listaProducto) {
+			
+				if(productoEN.getIdProducto() == 	Integer.parseInt(idCliente)){
+					
+					System.out.println("igual");
+				}
+				else {
+					listaProducto2.add(productoEN);
+					System.out.println("diferente");
+					
+				}
+				
+				carroCompraEN.setCarroList(listaProducto2);
+				carroCompraDAO.update(carroCompraEN);
+				
+			}
+			
+			
+			
+			
+			
+
+//				if (carroCompraEN != null) {
+//					System.out.println("update4");
+//					carroCompraEN.addProducto(productoEN);
+//
+//					carroCompraDAO.update(carroCompraEN);
+//
+//				} else {
+//					System.out.println("create4");
+//					carroCompraEN = new CarroCompraEN();
+//
+//					carroCompraEN.setIdCliente(Integer.parseInt(idCliente));
+//					// List<ProductoEN> listaProducto = new ArrayList<>();
+//					carroCompraEN.setClienteEN(clientEN);
+//					System.out.println("cliente: " + clientEN);
+//					// System.out.println("producto: " + productoEN);
+////
+////					List<ProductoEN> listadeProducto = new ArrayList<>();
+////					listadeProducto.add(productoEN);
+////					carroCompraEN.addProducto(productoEN);
+//
+//					System.out.println(carroCompraEN + "carro con producto");
+////					listaProducto.add(productoEN);
+////
+////					carroCompraEN.setCarroList(listadeProducto);
+//
+//					carroCompraDAO.create(carroCompraEN);
+//
+////					productoEN = productoDao.leer(Integer.parseInt(idProducto));
+////					List<ProductoEN> listadeProducto = new ArrayList<>();
+////					listadeProducto.add(productoEN);
+////					carroCompraDAO.update(carroCompraEN);
+//					// carroCompraEN.addProducto(productoEN);
+//				}
+//
+//			} else {
+//
+//				System.out.println("no existe  producto");
+//			}
+//
+//		} else {
+//
+//			System.out.println("no existe cliente");
+//		}
+//		// System.out.println("12345" + carroCompraEN);
+//		// carroCompraDAO.save(carroCompraEN);
+
+	}
+	
 
 	public List<ProductoMovil> getListarCarrito(String id) {
 

@@ -12,7 +12,11 @@ import javax.persistence.Query;
 import tienda.en.AdministradorEN;
 
 
-//combirtio a un ejb sin estado
+/**
+ * capa de acceso a datos 
+ * @author Diego, Rotman
+ *
+ */
 @Stateless
 public class AdministradorDAO {
 
@@ -21,7 +25,12 @@ public class AdministradorDAO {
 
 
 	
-	
+	/**
+	 * permite autentificar el acceso a la plataforma para el administrados
+	 * @param usuario 
+	 * @param passwd
+	 * @return el objeto al la capa de negocio
+	 */
 	public AdministradorEN autenticar(String usuario, String passwd) {
 		String jpql = "SELECT c FROM AdministradorEN c "
 				+ " WHERE c.usuario=:usuario AND c.password=:passwd"; 

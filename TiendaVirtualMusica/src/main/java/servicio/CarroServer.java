@@ -15,6 +15,11 @@ import tienda.en.ClienteEN;
 import tienda.en.ProductoMovil;
 import tienda.on.CarroCompraON;
 
+/**
+ * servicio par carrito cliente 
+ * @author Diego, Rotman
+ *
+ */
 @Path("/carro")
 public class CarroServer {
 
@@ -43,4 +48,20 @@ public class CarroServer {
 		return carroCompraON.getListarCarrito(idProducto);
 	}
 
+	
+	
+	
+	@POST
+	@Path("/eliminarProducto/{idProducto}/{idCliente}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Respuesta eliminarProductoCarro(@PathParam("idProducto") String idProducto, @PathParam("idCliente") String idCliente) {
+
+		System.out.println("llega solicitud login cliente: " + "user: " + idProducto + " pass: " + idCliente);
+
+		carroCompraON.eliminarCarrito(idProducto, idCliente);
+		// return clienteON.login(user, pass);
+
+		return null;
+	}
 }
