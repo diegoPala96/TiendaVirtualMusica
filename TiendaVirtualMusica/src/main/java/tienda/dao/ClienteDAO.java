@@ -19,8 +19,8 @@ public class ClienteDAO {
 		em.persist(c);
 	}
 
-	public ClienteEN read(String cedula) {
-		return em.find(ClienteEN.class, cedula);
+	public ClienteEN read(int idCliente) {
+		return em.find(ClienteEN.class, idCliente);
 	}
 
 	public void update(ClienteEN c) {
@@ -28,8 +28,8 @@ public class ClienteDAO {
 	}
 
 	public void delete(String cedula) {
-		ClienteEN c = read(cedula);
-		em.remove(c);
+		// ClienteEN c = read(cedula);
+		// em.remove(c);
 	}
 
 	public List<ClienteEN> getCliente() {
@@ -40,8 +40,7 @@ public class ClienteDAO {
 		List<ClienteEN> cliente = q.getResultList();
 		return cliente;
 	}
-	
-	
+
 	public ClienteEN validarLogin(String user, String pass) {
 
 		String jpql = "SELECT c FROM ClienteEN c WHERE c.usuario =:usuario AND c.password =:password";
@@ -51,11 +50,8 @@ public class ClienteDAO {
 		q.setParameter("usuario", user);
 		q.setParameter("password", pass);
 
-		
-		
 		return (ClienteEN) q.getSingleResult();
 
 	}
-	
 
 }

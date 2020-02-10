@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.xml.bind.DatatypeConverter;
 
 import tienda.dao.ProductoDao;
 import tienda.en.AlbumEN;
@@ -17,17 +16,16 @@ public class ProductoON {
 
 	@Inject
 	private ProductoDao productoDAO;
-	
+
 	@Inject
 	private AlbumON albumON;
 
-	public void guardar(ProductoEN producto , AlbumEN album) {
+	public void guardar(ProductoEN producto, AlbumEN album) {
 
 		albumON.guardar(album);
-		
-		
+
 		producto.setAlbum(albumON.artista(album.getDescripcion()));
-		
+
 		productoDAO.insertar(producto);
 	}
 
@@ -46,8 +44,6 @@ public class ProductoON {
 
 	public List<ProductoEN> editar(ProductoEN producto) {
 
-
-
 		productoDAO.actualizar(producto);
 
 		return productoDAO.obtenerProducto();
@@ -58,54 +54,48 @@ public class ProductoON {
 		return productoDAO.getProductoPorNombre(nombre);
 
 	}
-	
+
 	public ProductoEN getProducto(int codigo) {
 		ProductoEN aux = productoDAO.read(codigo);
 		System.out.println(aux);
 		return aux;
-		
+
 	}
-public byte[] getProductoImagen(String codigo) {
-		
-		
+
+	public byte[] getProductoImagen(String codigo) {
+
 		ProductoEN aux = productoDAO.read(Integer.parseInt(codigo));
 		System.out.println(aux);
-		
+
 		return aux.getImagenProd();
-	
-		
+
 	}
 
-public List<ProductoMovil> obtenerListaProductoMovil() {
-	
-	List<ProductoEN>productosWeb=productoDAO.obtenerProducto();
-	
-	List<ProductoMovil> productosMovil= new ArrayList<>();
-	
-	for (ProductoEN producto :productosWeb ) {
-		ProductoMovil movil = new ProductoMovil();
+	public List<ProductoMovil> obtenerListaProductoMovil() {
 
-		movil.setIdProducto(producto.getIdProducto());
-		movil.setNombre(producto.getNombre());
-		movil.setArtista(producto.getArtista());
-		//movil.setAlbum(producto.getAlbum());
-		movil.setAnio(producto.getAnio());
-		movil.setDuracion(producto.getDuracion());
-		movil.setPrecio(producto.getPrecio());
-		
-		 String base64Encoded = DatatypeConverter.printBase64Binary(producto.getImagenProd());
-		 movil.setImagenProd(base64Encoded);
+		List<ProductoEN> productosWeb = productoDAO.obtenerProducto();
 
+		List<ProductoMovil> productosMovil = new ArrayList<>();
 
-		productosMovil.add(movil);
+		for (ProductoEN producto : productosWeb) {
+			ProductoMovil movil = new ProductoMovil();
+
+			movil.setIdProducto(producto.getIdProducto());
+			movil.setNombre(producto.getNombre());
+			movil.setArtista(producto.getArtista());
+//			movil.setAlbum(producto.getAlbum());
+			movil.setAnio(producto.getAnio());
+			movil.setDuracion(producto.getDuracion());
+			movil.setPrecio(producto.getPrecio());
+
+//			String base64Encoded = DatatypeConverter.printBase64Binary(producto.getImagenProd());
+			movil.setImagenProd(
+					"http://localhost:8080/TiendaVirtualMusica/faces/imagen?id=" + producto.getIdProducto());
+
+			productosMovil.add(movil);
+		}
+
+		return productosMovil;
 	}
-	
-	
-	
-	
-	return productosMovil;
-}
-	
-
 
 }
